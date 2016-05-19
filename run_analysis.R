@@ -100,7 +100,7 @@ run_analysis_main <- function(overwrite=FALSE) {
     tidy_data<<-summarize(group_by(tidy_data, subjectid, activityname, variable), averagevalue=mean(value))
 
 ##### export the tidy data table into 'tidy_data.txt' for submission
-    write.table(tidy_data, paste(getwd(), "UCI HAR Dataset", "tidy_data.txt", sep="/"))
+    write.table(tidy_data, paste(getwd(), "UCI HAR Dataset", "tidy_data.txt", sep="/"),row.names=FALSE)
 
 }
 
