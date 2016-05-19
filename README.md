@@ -26,5 +26,14 @@ The data: https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20H
 ### Files in this repository
 * README.md - this file explains the assignment and contents of the repository.
 * CodeBook.md - this file explains how all of the scripts work and how they are connected.
-* run_analysis.R - an R script containing the main analysis script as well as functions to assist with repetitive tasks (such as file loading)
-* tidy_data.txt - the tidy data set result stored in a text file using the write.table {utils} function, default parameters.
+* run_analysis.R - an R script containing the main analysis script as well as functions to assist with repetitive tasks (such as file loading). The script performs the following in order:
+  * downloads the data set files (zipped) from source and unzips it into work directory
+  * loads features.txt and activity_labels.txt into R tables. This and other file loads are assisted by the ra_myfileload function defined in the script.
+  * loads subject_train.txt, X_train.txt and y_train.txt into R tables and combines them into 1 training data set table
+  * loads subject_train.txt, X_train.txt and y_train.txt into R tables and combines them into 1 test data set table
+  * combines the training and test data sets, row wise
+  * omits measurements which are not of mean or std deviation types
+  * populates the data set with activity name and clean up the column names
+  * creates a tidy data set by transforming the wide table into a narrow one, using the gather {tidyr} function
+  * exports the tidy data set into 'tidy_data.txt' for submission using the write.table {utils} function, default parameters.
+* tidy_data.txt - the tidy data set result stored in a text file 
