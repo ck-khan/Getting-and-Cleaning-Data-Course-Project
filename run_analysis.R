@@ -36,7 +36,7 @@ run_analysis_main <- function(overwrite=FALSE) {
     # retrieve a fresh copy of the data sets, if missing or required
     url<-"https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip"
     fn<-"getdata_projectfiles_UCI_HAR_Dataset.zip"
-    if(!file.exists(fn) || !dir.exists("UCI HAR Dataset") || overwrite) {
+    if(!dir.exists("UCI HAR Dataset") || overwrite) {
         download.file(url, fn, mode="wb")
         unzip(fn, overwrite=TRUE, exdir=getwd())
     }
@@ -100,7 +100,7 @@ run_analysis_main <- function(overwrite=FALSE) {
     tidy_data<<-summarize(group_by(tidy_data, subjectid, activityname, variable), averagevalue=mean(value))
 
 ##### export the tidy data table into 'tidy_data.txt' for submission
-    write.table(tidy_data, paste(getwd(), "UCI HAR Dataset", "tidy_data.txt", sep="/"),row.names=FALSE)
+    write.table(tidy_data, "tidy_data.txt", row.names=FALSE)
 
 }
 
