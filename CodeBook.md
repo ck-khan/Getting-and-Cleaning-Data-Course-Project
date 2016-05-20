@@ -46,7 +46,6 @@ The set of variables that were estimated and retained from these signals are:
 
 * Mean: Mean value
 * Std: Standard deviation
-* MeanFreq: Weighted average of the frequency components to obtain a mean frequency
 
 Note: Features are normalized and bounded within [-1,1] prior to its average calculated for each combination of subject, activity and variable resulting in the values found in tidy_data.txt.
 
@@ -73,5 +72,5 @@ Script performs the following:
 ### tidy_data.txt Columns
 * **subjectid** (int) - represents each of the subjects (volunteers), numbered from 1 to 30
 * **activityname** (character) - one of either WALKING, WALKING_UPSTAIRS, WALKING_DOWNSTAIRS, SITTING, STANDING or LAYING. This column indicates the activity that the subject was undergoing when the measurements were taken.
-* **variable** (character) - the measurement. this is a combination of feature (as described above) AND measurement type (mean, standard deviation or mean frequency) as described above. There are a total of 79 combinations in the tidy data set. Hyphens ('-') are used to separate the various segments of the variable name.
+* **variable** (character) - the measurement. this is a combination of feature (as described above) AND measurement type (mean or standard deviation) as described above. There are a total of 66 combinations in the tidy data set. Hyphens ('-') are used to separate the various segments of the variable name.
 * **averagevalue** (numeric) - this is the calculated average value summarizing many measurements across each combination of subject, activity and variable. This value is an average of originally normalized and bounded values (within [-1,1]).
