@@ -54,6 +54,7 @@ Note: Features are normalized and bounded within [-1,1] prior to its average cal
 tidy_data.txt contains average values for measurements for each combination of subject, activity and variable. From the source data, the following transformations were performed:
 
 R version: "R version 3.2.5 (2016-04-14)" on Windows 7
+
 Packages used: data.table (version 1.9.6), dplyr (version 0.4.3), tidyr (version 0.4.1)
 
 Script performs the following:
