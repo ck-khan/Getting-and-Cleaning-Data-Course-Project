@@ -76,13 +76,13 @@ run_analysis_main <- function(overwrite=FALSE) {
 ##### sub select only subjectid, activityid, mean and std dev measurement
 # 2 # columns; and store the resulting table back into the same object.
 #####
-    ra_data<<-ra_data[,c(1,2,grep("mean|std",names(ra_data)))]
+    ra_data<<-ra_data[,c(1,2,grep("mean\\(\\)|std\\(\\)",names(ra_data),ignore.case=TRUE,perl=TRUE))]
 
 ##### supplement the data set with activityname, joining by and dropping the
 # 3 # activityid column. Reposition activityname column to the front immediately
 ##### after subjectid, for readibility.
     ra_data<<-left_join(ra_data, ra_activities, by=c("activityid"))
-    ra_data<<-select(ra_data, subjectid, activityname, c(3:81))
+    ra_data<<-select(ra_data, subjectid, activityname, c(3:68))
 
 ##### clean up the column names to remove unwanted characters (keeping '-' as)
 # 4 # a separator of the variable name segments. Fixed capitalizations to
@@ -96,7 +96,7 @@ run_analysis_main <- function(overwrite=FALSE) {
 ##### create a tidy version of the data set, with the average of each
 # 5 # variable for each activity and subject.
 #####
-    tidy_data<<-gather(ra_data, variable, value, 3:81)
+    tidy_data<<-gather(ra_data, variable, value, 3:68)
     tidy_data<<-summarize(group_by(tidy_data, subjectid, activityname, variable), averagevalue=mean(value))
 
 ##### export the tidy data table into 'tidy_data.txt' for submission
